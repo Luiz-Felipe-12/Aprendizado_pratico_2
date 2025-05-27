@@ -1,7 +1,7 @@
 # Projeto: Estruturação de Formulário em HTML (prática 2)
 Este é meu segundo projeto para treinar **HTML puro** focando novamente na criação da estrutura de formulários e na aplicação de boas práticas e acessibilidade.
 
-[Veja aqui no GitHub Pages] SITE
+[Veja aqui no GitHub Pages] https://luiz-felipe-12.github.io/Aprendizado_pratico_2/
 
 # Tecnologias:
 HTML5
