@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+</head>
+<body>
+<h1>Cadastro de Usuário</h1>
+<p>Preencha os dados abaixo para criar sua conta.</p>
+<h5>(Pode preencher sem medo! O formulário ainda não leva as informações para lugar nenhum (action="#"))</h5>
+<!-- formulário -->
+ <form action="#" autocomplete="off" method="post" enctype="multipart/form-data">
+   <fieldset>
+    <legend>Cadastro de usuário</legend>
+    <label for="nome">Nome completo:</label>
+    <input type="text" name="nome" id="nome" placeholder="Digite seu nome" required>
+        <br>
+        <br>
+<!-- e-mail -->
+    <label for="email">E-mail:</label>
+    <input type="email" name="email" id="email" required placeholder="abc@hotmail.com">
+        <br>
+    <label for="confirmaemail">Confirme seu e-mail:</label>
+    <input type="email" name="confirmaemail" id="confirmaemail" required placeholder="abc@hotmail.com">
+        <br>
+        <br>
+<!-- senha -->
+    <label for="senha">Senha:</label>
+    <input type="password" name="senha" id="senha" placeholder="abc@123" pattern="^(?=.*\d)(?=.*[!@#$%&*])[A-Z][A-Za-z\d!@#$%&*]{8,30}$" required>
+        <br>
+    <label for="confirmasenha">Confirme sua senha:</label>
+    <input type="password" name="confirmasenha" id="confirmasenha" placeholder="abc@123" pattern="^(?=.*\d)(?=.*[!@#$%&*])[A-Z][A-Za-z\d!@#$%&*]{8,30}$" required>
+    <!--Explicação do patter no final do documento -->
+   
+    <p>A senha deve conter:</p>
+    <ul>
+        <li>A primeira letra maiuscula;</li>
+        <li>Um ou mais números;</li>
+        <li>Um ou mais caracteres especiais <strong>(!@#$%&*)</strong>;</li>
+        <li>Minimo 8 caracteres e máximo 30 caracteres.</li>
+    </ul>
+        <br>
+<!-- data de nascimento -->
+    <label for="data-nasc">Data de nascimento:</label>
+    <input type="date" name="data-nasc" id="data-nasc" required>
+        <br>
+<!-- classificação Genero  -->
+    <div class="cassificacao_genero" role="radiogroup" aria-labelledby="titulo_genero">
+        <!-- Tanto o div quando o role=group/radiogroup indica um grupo de elementos, porém o div serve para o navegador (css e layout). 
+         Para tecnologias assistivas (ex: leitores de tela) o div por si só não tem significado semântico, mas o role="gruop" diz para as
+         tecnologias assistidas para tratar os inputs como uma pergunta única, melhorando a experiencia para usuários com deficiência visual.-->
+        <!-- o div é um fieldset invisivel. o class serve para dar um "nome" para esse div, o que ajuda a estilizar no css -->
+        <!--aria-labelledby faz o leitor de texto ler o titulo antes das opções. -->
+        <p id="titulo_genero">Gênero:</p>
+        <input type="radio" name="genero" id="masc" value="masc">
+        <label for="masc">Masculino</label>
+        <input type="radio" name="genero" id="femin" value="femin">
+        <label for="femin">Feminino</label>
+        <input type="radio" name="genero" id="outro" value="outro">
+        <label for="outro">Outro</label>
+    </div>
+<!-- Interesses  -->
+    <div class="selecionar_interesses" role="group" aria-labelledby="titulo_interesses">
+    <p id="titulo_interesses">Interesses: (opcional)</p>
+    <input type="checkbox" name="interesses[]" id="tecnologia" value="tecnologia">
+    <label for="tecnologia">Tecnologia</label>
+    <input type="checkbox" name="interesses[]" id="esporte" value="esporte">
+    <label for="esporte">Esportes</label>
+    <input type="checkbox" name="interesses[]" id="musica" value="musica">
+    <label for="musica">Musica</label>
+        <br>
+    <input type="checkbox" name="interesses[]" id="culinaria" value="culinaria">
+    <label for="culinaria">Culinária</label>
+    <input type="checkbox" name="interesses[]" id="jogar" value="jogar">
+    <label for="jogar">Jogar</label>
+    <input type="checkbox" name="interesses[]" id="ler" value="ler">
+    <label for="ler">Ler</label>
+    <!-- na checkbox, foi colocado no name [] para que no backend seja interpretado mais de um item. 
+     Caso contrário, poderia ler somente o ultimo valor (se a pessoa escolhesse 2 ou mais itens)-->
+    <!--o <input type="checkbox" permite multipla escolha, ao contrario do type="radio" 
+    Importante: as opções precisa ter o mesmo nome com id e valor diferentes-->
+    </div>
+<!-- Termos de uso -->
+    <p>Termos de uso:</p>
+    <textarea rows="3" cols="50" readonly>Ao se cadastrar, você concorda com nossos termos de uso.
+    </textarea>  
+        <br>
+    <a href="termos_de_uso.html">Termos de uso</a>
+    <input type="checkbox" name="concorda_termos" id="concorda_termos" value="concorda_termos" required>
+    <label for="concorda_termos">Concordo com os termos.</label>
+    </fieldset>
+    <!-- Fiz o termo de uso no textarea para treinar os comandos do elemento-->
+
+<!-- Botões de enviar e resetar -->
+    <button type="submit">Enviar cadastro</button>
+    <button type="reset">Limpar campos</button>
+ </form>
+<!-- fim do formulário -->
+</body>
+</html>
+
+<!-- Explicação do pattern -->
+<!-- O pattern é um atributo que expecifica como o valor do elemento <input> é verificado no envio do formulário.
+um pattern comum usado bastante (esse modelo peguei na internet): ^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$
+    Explicação:
+  ^ -> inicio da String (pra verificar desdo primeiro caractere)  
+  (?=.*[A-Z]) -> pelo menos uma letra maiuscula
+  (?=.*[a-z]) -> pelo menos uma letra minuscula
+  (?=.*\d) -> pelo menos um número (\d = digito de 0 a 9)
+  (?=.*[@$!%*?&]) -> pelo menos um caractece especial (entre os listados na caixa)
+  .{8,30} -> o total deve conter entre 8 e 30 caracteres de qualquer tipo.
+  $ -> fim da string (encerra a verificação no ultimo caractere.)
+  -->
+
+
+<!-- Entendendo os conceitos do pattern (regex): 
+  
+^ (circunflexo): 
+Fora dos conchetes aceita apenas o que foi informado. Dentro dos conchetes [] nega o que foi informado.
+    Exemplo:
+^[a-z] -> aceita começar apenas com letras minusculas.
+[^a-z] -> aceita qualquer coisa, menos letras minusculas, mas afeta somente um caractere.
+O circunflexo negativo age exatamente na posição em que aparece. Não é uma verificação geral como lookahead
+    Exemplo:
+a[^\d]b -> diz que entre o "a" e "b" não pode ter um digito (afeta só um caractere).
+
+
+. (ponto): 
+representa qualquer caractere, exeto quebra de linha (\n)
+Ele sozinho, indica somente uma unidade.
+    Exemplo:
+. (ponto) pode ser a, b, (espaço), número, mas precisa ter algo (não pode ser vazio).
+
+
+* (asterisco): 
+sempre precisa vir depois de algo (letra, numero, ponto etc).
+Significa: zero ou mais vezes do que veio antes.
+    Exemplo:
+a* diz que pode ter nenhum ou vários "a"
+b*o diz vários "b" e depois um "o"
+  
+
++ (mais): 
+não permite nada vazio e também indica que pode ter um ou mais repetições do caractere anterior.
+    Exemplo:
+Queremos um número, mas não pode ser nada (como *), então se colocasse \d* poderia ter esse "nada".
+Mas se colocarmos apenas \d, ele define automaticamente somente um caractere.
+    O certo seria:
+\d+ (assim, não pode ser nada, mas pode haver mais de um caractere)
+    Outro exemplo:
+^[a-z]+$ -> esse + indica que pode ter uma ou mais letras minusculas, se não tivesse esse +, aceitaria apenas 1 letra.
+
+
+lookahead positivo (?=...) e lookahead negativo (?!...):
+é uma condição que precisa ser verdadeira para validar, mas não limita caracteres. Ou seja, o lookahead apenas verifica.
+    Exemplo:
+pattern="(?=.*\d)" quer dizer: "aceita se tiver pelo menos 1 digito"
+
+Já o negativo é uma condição de "Não pode ter isso".
+    Exemplo:
+(?!\d) -> aqui diz que não pode conter numeros.
+
+  CUIDADO:
+Se a negação estiver encostado com o string(^), ele verifica apenas o primeiro caractere.
+    Exemplo:
+^(?!\d) -> diz que somente o primeiro caractere não pode ser um número.
+
+  Importante: Essas condições são aplicadas somente depois do lookahead e não antes.
+Se tiver, por exemplo: 
+^.{5}(?!\d) -> diz que no começo pode ter números, mas depois de 5 caracteres (por causa do {5}) tem a lookhead negativa.
+-->
